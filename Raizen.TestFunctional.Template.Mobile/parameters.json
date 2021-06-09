@@ -1,0 +1,106 @@
+﻿/* 
+  Configurações 
+  ==============================================================================================================================================================================================================================
+  NodePath: caminho do executor do node.js (obrigatório)
+  AppiumPath: caminho do executor do appium (obrigatório)
+  OBS: Caso a execução seja feita na Azure com Emulador, não é necessário informar os Paths.
+  Os valores serão informados no pipeline da Azure, via variaveis de ambiente.
+
+  MobileAndroid: define se os testes serão executados em plataforma Android.
+  Opções > (true/false)
+    MobileAndroidConfiguration: definição dos capabilities para execução dos testes.
+    MobileAndroidPlatformName: nome da plataforma que será executado os testes.
+    MobileAndroidDeviceName: nome do Device que será utilizado para execução dos testes.
+    MobileAndroidAppPath: informar nome da apk da aplicação (.apk deverá estar na pasta APP do projeto de testes).
+    MobileAndroidActivity: informar a activity de entrada da aplicação.
+    MobileAndroidAppPackage: informa o package da aplicação.
+    MobileAndroidUDID: informar o UDID do emulador (preencher somente se for utilizar emulador)
+  
+  MobileiOS: define se os testes serão executados em plataforma iOS.
+  Opções > (true/false)
+    MobileiOSPlatformVersion: versão da plataforma de execução.
+    MobileiOSDeviceName: nome do Device que será utilizado para os execução dos testes,
+    MobileiOSAppPath: caminho da .ipa da aplicação (.ipa deverá estar na pasta APP do projeto de testes).
+    MobileiOSUDID: informar o UDID do emulador (preencher somente se for utilizar emulador)
+
+  Atenção: Segue abaixo o link para verificar as versões do Android e suas Apis.
+  https://pt.wikipedia.org/wiki/Hist%C3%B3rico_de_vers%C3%B5es_do_Android
+
+  TimeOut: Configuração do tempo de espera (em segundos) do Selenium para WebElements e PageLoad.
+
+  DevOps: Define se a execução dos testes será feita na Azure (com emulador) ou utilizando a Device Farm (Browserstack).
+  Opções > (local/azure/farm).
+  OBS: Para execuções locais, manter a opção LOCAL.
+
+  ReportTest: Gerar relatórios das execuções (apenas local).
+  Opções > (true/false).
+  OBS: Necessário que o parâmetro DevOps esteja com opção "local".
+    ReportFolder: Path de uma pasta local que receberá os relatórios.
+    ReportScreenshots: Anexar screenshots em todos os passos ou apenas erros. 
+    Opções > (all/error). 
+
+  SafeCredentials: habilita a request para o cofre de senhas para obtenção de dados de acesso.
+  Opções > (true/false).
+  Credentials: array que permite informar os usuários que serão consultados no cofre de senhas. Deverá ser solicitado a equipe de Segurança os dados do usuário.    
+    Name: login do usuário.
+    Id: id do usuário no cofre de senhas.
+    ConsumerKey:  solicitar para a equipe de segurança, informando os dados da aplicação.
+    ConsumerSecret: solicitar para a equipe de segurança, informando os dados da aplicação.
+    TokenKey (AccessToken): solicitar para a equipe de segurança, informando os dados da aplicação.
+    TokenSecret: solicitar para a equipe de segurança, informando os dados da aplicação.
+   OBS: Link com mais informações: https://confluence.minhati.com.br/display/AC/SenhaSegura+-+Guia+de+Uso+do+Desenvolvedor
+   OBS²: Para realizar a requisição de mais de um usuário, duplicar o bloco com os dados do usuário (Name, Id,...) e incluir os dados de outro usuário.
+   ============================================================================================================================================================================================================================================= 
+  */
+{
+  "appSettings": {
+    //"NodePath": "C:/Program Files/nodejs/node.exe",
+    //"AppiumPath": "C:/Users/mateu/AppData/Roaming/npm/node_modules/appium/build/lib/main.js",
+    "NodePath": "",
+    "AppiumPath": "",
+
+    "MobileAndroid": "true",
+    "MobileAndroidConfiguration": [
+      {
+        "MobileAndroidPlatformName": "Android",
+        "MobileAndroidPlatformVersion": "10",
+        "MobileAndroidDeviceName": "Galaxy Nexus",
+        "MobileAndroidAppPath": "samplelogin.apk",
+        "MobileAndroidActivity": "com.loginmodule.learning.activities.LoginActivity",
+        "MobileAndroidAppPackage": "com.loginmodule.learning",
+        "MobileAndroidUDID": "emulator-5554"
+      }
+    ],
+
+    "MobileiOS": "false",
+    "MobileiOSConfiguration": [
+      {
+        "MobileiOSPlatformVersion": "",
+        "MobileiOSDeviceName": "",
+        "MobileiOSAppPath": "",
+        "MobileiOSUDID": ""
+      }
+    ],
+
+    "TimeOut": "300",
+
+    "DevOps": "azure",
+
+    "ReportTest": "false",
+    "ReportFolder": "",
+    "ReportScreenshots": "error",
+
+    "SafeCredentials": "false",
+    "Credentials": [
+      {
+        "Name": "",
+        "Id": "",
+        "ConsumerKey": "",
+        "ConsumerSecret": "",
+        "TokenKey": "",
+        "TokenSecret": ""
+      }
+    ]
+  }
+
+}
